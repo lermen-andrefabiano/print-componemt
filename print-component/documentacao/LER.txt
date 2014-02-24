@@ -1,0 +1,44 @@
+- PASSO 1
+CRIAR JAR
+
+- PASSO 2
+keytool -genkey -dname "CN=MV-SISTEMAS, OU=LCMI, O=MV-SISTEMAS, C=BR" -storetype pkcs12 -alias key -keystore C:\Desenvolvimento\Workspaces\workspace_SACR_1_1_3_2_TASK_LST\mvsacr\mv-print-component\keystore\MVkeystore -storepass 123456 -validity 1200
+
+- PASSO 3
+jarsigner -keystore C:\Desenvolvimento\Workspaces\workspace_SACR_1_1_3_2_TASK_LST\mvsacr\mv-print-component\keystore\MVkeystore -storepass 123456 -signedjar C:\Desenvolvimento\Workspaces\workspace_SACR_1_1_3_2_TASK_LST\mvsacr\mv-print-component\dist\mv-print-component-min7u45.jar C:\Desenvolvimento\Workspaces\workspace_SACR_1_1_3_2_TASK_LST\mvsacr\mv-print-component\dist\mv-print-component-min7u45.jar key
+
+
+###################################################################
+
+PARA GERAR BUILD min7u45
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Bundle-Vendor: MV Sistemas
+Application-Library-Allowable-Codebase: *
+Bundle-Version: 1.0.1
+Application-Name: MV Identificação maquina local
+Permissions: all-permissions
+Created-By: 1.7.0_45-b18 (Oracle Corporation)
+Bundle-SymbolicName: mv-print-component
+Caller-Allowable-Codebase: *
+Codebase: *
+
+###################################################################
+
+PARA GERAR BUILD max7u40
+
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Bundle-Vendor: MV Sistemas
+Trusted-Library: true
+Application-Library-Allowable-Codebase: *
+Bundle-Version: 1.0.1
+Application-Name: MV Identificação maquina local
+Permissions: all-permissions
+Created-By: 1.7.0_45-b18 (Oracle Corporation)
+Bundle-SymbolicName: mv-print-component
+Caller-Allowable-Codebase: *
+Codebase: *
+
+###################################################################

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<project name="print-component" default="package" basedir="../">
+
+	<property file="${basedir}/build/build.properties" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${output.dir}" />
+		<echo>Directory created: ${output.dir}</echo>
+	</target>
+
+	<!-- Compile the java code -->
+	<target name="compile">		
+		<javac srcdir="${src.dir}" destdir="${output.dir}" classpathref="classpath" debug="true" />
+		<echo>Project compiled: ${ant.project.name}</echo>
+	</target>
+	
+	<!-- Generate the jar file -->
+	<target name="generate-jar">			
+		<jar jarfile="${dist.dir}/${jar.file.name}" manifest="${manifest.file}">
+			<fileset dir="${output.dir}">
+				<include name="**/*" />
+			</fileset>
+			<zipgroupfileset dir="${lib.dir}" includes="**/*.jar"/>
+			<manifest>
+				<attribute name="Component-Version" value="${version}" />
+			</manifest>
+		</jar>
+		<echo>Jar file created: ${jar.file.name}</echo>
+	</target>
+
+	<target name="clean">
+		<delete dir="${output.dir}" />
+		<echo>Directory deleted: ${output.dir}</echo>
+
+		<delete file="${dist.dir}/${jar.file.name}" />		
+		<echo>Binary files deleted from directory: ${dist.dir} </echo>
+	</target>
+	
+	<target name="finalize">
+		<delete dir="${output.dir}" />
+	</target>
+	
+	<!-- Copia para o SACR -->	
+	<target name="_copyToSACR" description="Copia para o SACR.">
+		<copy tofile="${copy.dir}/${jar.file.name}" file="${dist.dir}/${jar.file.name}" />
+		<echo>Copiado para o SACR (${copy.dir}/${jar.file.name}).</echo>
+	</target>
+
+	<target name="package" depends="clean, init, compile, generate-jar, finalize" />
+
+</project>

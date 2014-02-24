@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Bundle-Vendor: MV Sistemas
+Application-Library-Allowable-Codebase: *
+Bundle-Version: 1.0.1
+Application-Name: MV Identificação maquina local
+Permissions: all-permissions
+Created-By: 1.7.0_45-b18 (Oracle Corporation)
+Bundle-SymbolicName: print-component
+Caller-Allowable-Codebase: *
+Codebase: *
