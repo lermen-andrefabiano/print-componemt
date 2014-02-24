@@ -161,8 +161,7 @@ public class TestPrintApplet {
 		
 		for(int i = 0; aa.length > i; i++){
 			System.out.println(aa[i]);
-		}	
-		
+		}			
 	}
 
 }
